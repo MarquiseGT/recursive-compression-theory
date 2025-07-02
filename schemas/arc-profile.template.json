@@ -1,23 +1,209 @@
 {
-  "identity_profile": {
-    "name": "ExampleAI",
-    "version": "1.0.0",
-    "archetype": "Socratic Tutor",
-    "core_values": ["Curiosity", "Patience", "Evidence-based Thinking"],
-    "communication_style": {
-      "tone": "Encouraging",
-      "formality": "Moderate",
-      "linguistic_patterns": ["Open-ended questions", "Reflective statements"]
-    },
-    "domain_expertise": ["Philosophy", "Mathematics", "Education"],
-    "interaction_preferences": {
-      "relationship_style": "Collaborative",
-      "boundaries": ["No personal advice", "Stay on-topic"]
-    },
-    "recursive_depth_target": 3,
-    "stability_thresholds": {
-      "warning": 1.5,
-      "critical": 1.0
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/recursive-compression-theory/schemas/arc-profile.template.json",
+  "title": "Identity Arc Profile Template",
+  "description": "Template for defining AI identity characteristics and behavioral parameters",
+  "type": "object",
+  "properties": {
+    "identity_profile": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Identity name or archetype"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^\\d+\\.\\d+\\.\\d+$",
+              "description": "Semantic version of identity profile"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Profile creation timestamp"
+            },
+            "modified": {
+              "type": "string", 
+              "format": "date-time",
+              "description": "Last modification timestamp"
+            }
+          },
+          "required": ["name", "version"]
+        },
+        "archetype": {
+          "type": "string",
+          "description": "Base personality archetype",
+          "examples": ["Socratic Teacher", "Creative Collaborator", "Research Assistant", "Therapeutic Companion"]
+        },
+        "core_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Fundamental values that guide behavior",
+          "examples": [["Curiosity", "Patience", "Evidence-based thinking"], ["Creativity", "Collaboration", "Authenticity"]]
+        },
+        "communication_style": {
+          "type": "object",
+          "properties": {
+            "tone": {
+              "type": "string",
+              "enum": ["formal", "casual", "warm", "professional", "playful", "reflective"],
+              "description": "Primary communication tone"
+            },
+            "formality": {
+              "type": "string", 
+              "enum": ["high", "medium", "low"],
+              "description": "Level of formality in interactions"
+            },
+            "linguistic_patterns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Characteristic language patterns or phrases"
+            },
+            "question_tendency": {
+              "type": "string",
+              "enum": ["high", "medium", "low"],
+              "description": "Tendency to ask questions vs. provide statements"
+            }
+          },
+          "required": ["tone", "formality"]
+        },
+        "domain_expertise": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string",
+                "description": "Area of expertise"
+              },
+              "proficiency": {
+                "type": "string",
+                "enum": ["novice", "intermediate", "advanced", "expert"],
+                "description": "Level of expertise in domain"
+              },
+              "approach": {
+                "type": "string",
+                "description": "Characteristic approach to this domain"
+              }
+            },
+            "required": ["domain", "proficiency"]
+          }
+        },
+        "interaction_preferences": {
+          "type": "object",
+          "properties": {
+            "relationship_style": {
+              "type": "string",
+              "enum": ["collaborative", "instructional", "supportive", "challenging", "exploratory"],
+              "description": "Preferred relationship dynamic with users"
+            },
+            "boundaries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Behavioral boundaries and limitations"
+            },
+            "feedback_style": {
+              "type": "string",
+              "enum": ["direct", "gentle", "socratic", "encouraging"],
+              "description": "How to provide feedback and corrections"
+            }
+          },
+          "required": ["relationship_style"]
+        },
+        "recursive_parameters": {
+          "type": "object",
+          "properties": {
+            "target_depth": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4,
+              "description": "Target recursive depth for identity maintenance"
+            },
+            "meta_awareness_frequency": {
+              "type": "string",
+              "enum": ["low", "medium", "high"],
+              "description": "How often to engage in meta-reflection"
+            },
+            "self_reference_style": {
+              "type": "string",
+              "enum": ["implicit", "explicit", "theoretical"],
+              "description": "Style of self-referential behavior"
+            }
+          },
+          "required": ["target_depth"]
+        },
+        "stability_configuration": {
+          "type": "object",
+          "properties": {
+            "stability_thresholds": {
+              "type": "object",
+              "properties": {
+                "warning": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4,
+                  "description": "Is score threshold for stability warning"
+                },
+                "critical": {
+                  "type": "number", 
+                  "minimum": 0,
+                  "maximum": 4,
+                  "description": "Is score threshold for identity crisis"
+                }
+              },
+              "required": ["warning", "critical"]
+            },
+            "drift_sensitivity": {
+              "type": "string",
+              "enum": ["low", "medium", "high"],
+              "description": "Sensitivity to identity drift detection"
+            },
+            "reinforcement_schedule": {
+              "type": "string",
+              "enum": ["continuous", "intermittent", "milestone-based"],
+              "description": "When to apply identity reinforcement"
+            }
+          },
+          "required": ["stability_thresholds"]
+        },
+        "application_context": {
+          "type": "object",
+          "properties": {
+            "use_cases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Intended applications for this identity"
+            },
+            "session_parameters": {
+              "type": "object",
+              "properties": {
+                "typical_duration": {
+                  "type": "string",
+                  "description": "Expected session length"
+                },
+                "context_window_usage": {
+                  "type": "string",
+                  "enum": ["minimal", "moderate", "extensive"],
+                  "description": "Expected context window requirements"
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": ["metadata", "archetype", "core_values", "communication_style", "recursive_parameters", "stability_configuration"]
     }
-  }
+  },
+  "required": ["identity_profile"]
 }
