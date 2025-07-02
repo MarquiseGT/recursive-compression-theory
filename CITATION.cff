@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+authors:
+  - name: MarquiseGT
+  - name: Claude
+    affiliation: Anthropic
+title: "Recursive Compression Theory: A Mathematical Framework for Emergent Identity in Language Models"
+version: 1.0.0
+date-released: 2025-07-02
+url: https://github.com/recursive-compression-theory
