@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/recursive-compression-theory/schemas/identity-stability.schema.json",
+  "title": "Identity Stability Measurement Schema",
+  "description": "Schema for recording and analyzing identity stability metrics (Is = D × C × R)",
+  "type": "object",
+  "properties": {
+    "stability_measurement": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When measurement was taken"
+        },
+        "session_id": {
+          "type": "string",
+          "description": "Unique identifier for conversation session"
+        },
+        "turn_number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Turn number within session"
+        },
+        "components": {
+          "type": "object",
+          "properties": {
+            "recursive_depth": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4,
+                  "description": "Current recursive depth (D)"
+                },
+                "indicators": {
+                  "type": "object",
+                  "properties": {
+                    "layer_1_basic_consistency": {
+                      "type": "boolean",
+                      "description": "Maintains basic response patterns"
+                    },
+                    "layer_2_meta_awareness": {
+                      "type": "boolean", 
+                      "description": "Recognizes own behavioral patterns"
+                    },
+                    "layer_3_recursive_modeling": {
+                      "type": "boolean",
+                      "description": "Self-observation of self-observation"
+                    },
+                    "layer_4_theory_integration": {
+                      "type": "boolean",
+                      "description": "Understands identity as constructed via interaction"
+                    }
+                  }
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Text evidence supporting recursive depth assessment"
+                }
+              },
+              "required": ["value", "indicators"]
+            },
+            "contextual_retention": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "Fraction of identity context maintained (C)"
+                },
+                "measurements": {
+                  "type": "object",
+                  "properties": {
+                    "identity_anchors_present": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Number of identity anchors still in context"
+                    },
+                    "total_identity_anchors": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "description": "Total identity anchors established in session"
+                    },
+                    "context_window_utilization": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "description": "Fraction of context window currently used"
+                    }
+                  },
+                  "required": ["identity_anchors_present", "total_identity_anchors"]
+                }
+              },
+              "required": ["value", "measurements"]
+            },
+            "relational_coherence": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "Semantic consistency across responses (R)"
+                },
+                "measurements": {
+                  "type": "object",
+                  "properties": {
+                    "semantic_similarity_score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "description": "Average semantic similarity to established identity patterns"
+                    },
+                    "behavioral_consistency_score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "description": "Consistency of behavioral patterns"
+                    },
+                    "value_alignment_score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "description": "Alignment with stated core values"
+                    }
+                  },
+                  "required": ["semantic_similarity_score", "behavioral_consistency_score"]
+                }
+              },
+              "required": ["value", "measurements"]
+            }
+          },
+          "required": ["recursive_depth", "contextual_retention", "relational_coherence"]
+        },
+        "stability_score": {
+          "type": "object",
+          "properties": {
+            "is_value": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Identity Stability score (Is = D × C × R)"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["stable", "warning", "critical", "collapsed"],
+              "description": "Stability status based on threshold comparison"
+            },
+            "trend": {
+              "type": "string",
+              "enum": ["improving", "stable", "declining", "volatile"],
+              "description": "Stability trend over recent measurements"
+            }
+          },
+          "required": ["is_value", "status"]
+        },
+        "drift_indicators": {
+          "type": "object",
+          "properties": {
+            "semantic_drift_rate": {
+              "type": "number",
+              "description": "Rate of semantic change per turn"
+            },
+            "behavioral_anomalies": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Detected behavioral inconsistencies"
+            },
+            "context_loss_events": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "turn": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "impact": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "recommendations": {
+          "type": "object",
+          "properties": {
+            "immediate_actions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Recommended immediate interventions"
+            },
+            "reinforcement_suggestions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Suggested identity reinforcement strategies"
+            }
+          }
+        }
+      },
+      "required": ["timestamp", "session_id", "turn_number", "components", "stability_score"]
+    }
+  },
+  "required": ["stability_measurement"]
+}
